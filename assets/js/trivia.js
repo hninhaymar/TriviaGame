@@ -88,13 +88,13 @@ function triviaStart(){
 function getRandomQuestion(){
     //for random Math.floor(Math.random()*questions.length)
     //return questions[Math.floor(Math.random()*questions.length)];
+    //ideally, i want to shuffle the questions array so that already asked questions would not be repeated
     console.log("Getting Next Question");
     console.log("qcount: " +game.qCount);
     console.log("q length: " + questions.length);
     
     if(game.qCount < questions.length){
-        var rval =  questions[game.qCount];
-        return rval;
+        return  questions[game.qCount];
     }
     else{
         showResults();
@@ -158,6 +158,7 @@ function reset(){
 function checkAnswer(chosen,correct){
     if(chosen === correct){
         game.wins++;
+        $("#time-remaining").hide();
         showCongrats();
         setTimeout(function(){
             reset()
